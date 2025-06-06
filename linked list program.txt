@@ -1,0 +1,63 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class SimpleLinkedListDemo {
+    public static void main(String[] args) {
+        LinkedList<String> list = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("=== LinkedList Demo ===");
+        System.out.println("Available commands: add, remove, search, print, clear, quit");
+
+        while (true) {
+            System.out.print("\nEnter command: ");
+            String command = scanner.nextLine().trim().toLowerCase();
+
+            switch (command) {
+                case "add":
+                    System.out.print("Enter item to add: ");
+                    String item = scanner.nextLine();
+                    list.add(item);
+                    System.out.println("Added: " + item);
+                    break;
+
+                case "remove":
+                    System.out.print("Enter item to remove: ");
+                    String toRemove = scanner.nextLine();
+                    if (list.remove(toRemove)) {
+                        System.out.println("Removed: " + toRemove);
+                    } else {
+                        System.out.println("Item not found.");
+                    }
+                    break;
+
+                case "search":
+                    System.out.print("Enter item to search: ");
+                    String toSearch = scanner.nextLine();
+                    if (list.contains(toSearch)) {
+                        System.out.println("Item found at index: " + list.indexOf(toSearch));
+                    } else {
+                        System.out.println("Item not found.");
+                    }
+                    break;
+
+                case "print":
+                    System.out.println("List contents: " + list);
+                    break;
+
+                case "clear":
+                    list.clear();
+                    System.out.println("List cleared.");
+                    break;
+
+                case "quit":
+                    System.out.println("Exiting program.");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Unknown command. Try: add, remove, search, print, clear, quit");
+            }
+        }
+    }
+}
